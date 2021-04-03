@@ -4,7 +4,7 @@ from flask import Flask ,render_template, flash ,redirect,url_for,request, Respo
 from flask_login import login_user, logout_user, login_required
 from project.model import User, History
 from project.form import Register_User,SignInForm
-#from project.chatbot import chatbot
+from project.chatbot import chatbot
 from datetime import datetime, time
 import project.ml_model as mod
 import numpy as np
@@ -42,8 +42,7 @@ def get_bot_response():
 	sympts_data = np.reshape(np.zeros(132),(1,132))
 	class_names = list(model.return_symp_names())
 	dis = ''
-	user = request.args.get('msg')
-	print("jello"+user)
+	user = request.args.get('text')
 
 	if(user in class_names):
 			sympts_data[0][class_names.index(user)] =1
@@ -53,12 +52,9 @@ def get_bot_response():
 			if(user == ''):
 				return('Type something..')
 
-	'''else:
-		return str(chatbot.get_response(userText)
+	else:
+		return str(chatbot.get_response(userText))
 
-
-'''
-	return ("Did you say ")
 
 
 
