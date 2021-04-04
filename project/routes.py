@@ -43,18 +43,20 @@ def get_bot_response():
 	class_names = list(model.return_symp_names())
 	dis = ''
 	user = request.args.get('text')
+	if(request.args.get('medi') == 'y'):
+		if(user in class_names):
+				sympts_data[0][class_names.index(user)] =1
+				dis = model.test_model(sympts_data)
+				return("You might have "+dis)
 
-	if(user in class_names):
-			sympts_data[0][class_names.index(user)] =1
-			dis = model.test_model(sympts_data)
-			return("You might have "+dis)
+				if(user == ''):
+					return('Type something..')
 
-			if(user == ''):
-				return('Type something..')
+		else:
+			return("Sorry couldn't find")
 
 	else:
-		return str(chatbot.get_response(userText))
-
+		return str(chatbot.get_response(user))
 
 
 

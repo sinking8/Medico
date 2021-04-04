@@ -88,34 +88,46 @@
       msgerChat.scrollTop += 500;
     }
     var text =  " "
+    let symp_activate = false;
     function botResponse(rawText) {
 
-      /*if(rawText == "no"){
-        appendMessage(BOT_NAME, BOT_IMG, "left","Thanks for spending your time");
-        text = " "
+
+      if(symp_activate == false){
+          // Bot Response
+          $.get("/get", { text: rawText,medi:'n' }).done(function (data) {
+            const msgText = data;
+            appendMessage(BOT_NAME, BOT_IMG, "left", msgText);
+            appendMessage(BOT_NAME, BOT_IMG, "left","Are you interested to find your illness? (yes/no)");
+          });
+          text = " "}
+
+
+      if(rawText == 'yes' && symp_activate == false){
+        symp_activate = true;
+        appendMessage(BOT_NAME, BOT_IMG, "left","Good to hear");
       }
-      else{
+      else if(symp_activate == true){
+          if(rawText == 'no'){
+            text = ""
+            symp_activate = false
+            appendMessage(BOT_NAME, BOT_IMG, "left","Thank you");
+          }
+          else if(rawText == 'yes'){
+            appendMessage(BOT_NAME, BOT_IMG, "left","provide with symptoms");
+          }
+          else{
+            $.get("/get", { text: rawText,medi:'y' }).done(function (data) {
+            const msgText = data;
+            appendMessage(BOT_NAME, BOT_IMG, "left", msgText);
+            appendMessage(BOT_NAME, BOT_IMG, "left", "wanna continue (yes/no)");
+          });
+          }       
+      }
 
-      if(rawText == "yes"){
-        //text =  text +" "+rawText;
-        appendMessage(BOT_NAME, BOT_IMG, "left","Can you provide some more symptoms");
-      }*/
 
 
-      // Bot Response
-      //else{
-      $.get("/get", { text: rawText }).done(function (data) {
-        console.log(rawText);
-        console.log(data);
-        const msgText = data;
-        appendMessage(BOT_NAME, BOT_IMG, "left", msgText);
-        appendMessage(BOT_NAME, BOT_IMG, "left","Do you wish to give another symptom?(yes/no)");
 
-
-      });}
-    //}
-
-    //}
+}
 
 
     // Utils
