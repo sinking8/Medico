@@ -55,8 +55,13 @@ def get_bot_response():
 		else:
 			return("Sorry couldn't find")
 
-	else:
+	elif(request.args.get('medi') == 'n'):
+		resp = str(chatbot.get_response(user))
+		if(resp == 'Do you feel?'):return '' 
 		return str(chatbot.get_response(user))
+
+	else:
+		return('I am sorry, but I do not understand. I am still learning.')
 
 
 

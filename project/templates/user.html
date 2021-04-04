@@ -93,13 +93,17 @@
 
 
       if(symp_activate == false){
-          // Bot Response
-          $.get("/get", { text: rawText,medi:'n' }).done(function (data) {
-            const msgText = data;
-            appendMessage(BOT_NAME, BOT_IMG, "left", msgText);
-            appendMessage(BOT_NAME, BOT_IMG, "left","Are you interested to find your illness? (yes/no)");
-          });
+
+          if(rawText  !='')
+          {
+              // Bot Response
+              $.get("/get", { text: rawText,medi:'n' }).done(function (data) {
+                const msgText = data;
+                appendMessage(BOT_NAME, BOT_IMG, "left", msgText);
+                appendMessage(BOT_NAME, BOT_IMG, "left","Are you interested to find your illness? (yes/no)");
+              });
           text = " "}
+        }
 
 
       if(rawText == 'yes' && symp_activate == false){
@@ -123,8 +127,6 @@
           });
           }       
       }
-
-
 
 
 }
