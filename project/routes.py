@@ -87,7 +87,7 @@ def register():
 		return redirect(url_for('home'))
 
 	else:
-		flash(f'Login Unsuccesful. Please check your email id or password','danger')
+		flash(f'Error Occured','danger')
 
 	return render_template('register.html',form =form)
 
