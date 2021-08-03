@@ -49,8 +49,8 @@ def get_bot_response():
 				dis = model.test_model(sympts_data)
 				return("You might have "+dis)
 
-				if(user == ''):
-					return('Type something..')
+		elif(user == ''):
+			return('Type something..')
 
 		else:
 			return("Sorry couldn't find")
