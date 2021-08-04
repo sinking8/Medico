@@ -18,6 +18,7 @@ def home():
 	if form.validate_on_submit():
 	#validating the sign-in form
 		user = User.query.filter_by(email_id=form.email_id.data).first()
+		return redirect(url_for('user'))
 
 		if user and bcrypt.check_password_hash(user.password, form.password.data):
 			login_user(user)
