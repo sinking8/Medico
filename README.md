@@ -42,8 +42,8 @@ Helps users by providing medical assistance.
 1. Clone the repo
 
 ```
-$ git clone https://github.com/sinking8/MEDICO.git
-$ cd Covi-Buddy
+$ git clone https://github.com/sinking8/Medico.git
+$ cd Medico
 ```
 
 2. Initialize and activate a virtualenv:
