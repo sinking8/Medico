@@ -42,7 +42,7 @@ Helps users by providing medical assistance.
 1. Clone the repo
 
 ```
-$ git clone https://github.com/sinking8/MedICO.git
+$ git clone https://github.com/sinking8/MEDICO.git
 $ cd Covi-Buddy
 ```
 
