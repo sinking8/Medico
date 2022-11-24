@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<style type="text/css">
+	
+	.form-group{
+		width: 50%;
+	}
+
+</style>
+
+
+<form class="box" method="POST" style="margin-left: 3%;margin-top:60px">
+					<h1>Register</h1>
+					<br>
+                        {{form.hidden_tag()}}
+                        <fieldset class="form-group">
+                            	<div class = "form-group" >
+                                  {{ form.Name(class="form-control form-control-lg",type="text",placeholder='Name')}}  
+                                </div>
+                                <div class = "form-group" >
+                                  {{ form.Age(class="form-control form-control-lg",type="text",placeholder='Age')}}  
+                                </div>
+                                <div class = "form-group" >
+                                  {{ form.Mobile_number(class="form-control form-control-lg",type="text",placeholder='Mobile Number')}}  
+                                </div>
+                                <div class = "form-group">
+                                  {{ form.Gender(class="form-control form-control-lg",placeholder="Gender",type="text")}}  
+                                </div>
+                                <div class = "form-group" >
+                                  {{ form.email_id(class="form-control form-control-lg",type="text",placeholder='Email address')}}  
+                                </div>
+                                <div class = "form-group" >
+                                  {{ form.password(class="form-control form-control-lg",type="password",placeholder='Enter Password')}}  
+                                </div>
+
+                        </fieldset>
+
+                   <div class = "form-group">
+   					{{ form.submit(class="btn btn-large btn-login text-uppercase font-weight-bold mb-2 btn-outline-info",
+                 		 style="text_align:center", type="submit",value="Submit")}}
+                    </div> 
+              	</form>
+
+        <!-------------------------alert messages start --------------------->
+   	   <!------------------------------------------------------------------->
+	    <div class="col-md-8 m-1">
+	      {% with messages = get_flashed_messages(with_categories=true) %}
+	        
+	        {% if messages %}
+
+	          {% for category, message in messages %}
+	            <div class="alert alert-{{category}}" role="alert">
+	            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	              <span aria-hidden="true">&times;</span>
+	              </button>
+	            {{ message }}
+	          </div>
+	          
+	          {% endfor %}
+	        
+	        {%endif%}
+
+	      {% endwith %}
+	   </div>
+   		<!-------------------------alert messages end --------------------->
+   		<!----------------------------------------------------------------->
+                
+{% endblock content %}
